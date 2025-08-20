@@ -149,7 +149,7 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
           # Define the new image with tag
-          NEW_IMAGE="${secrtes.USERNAME}/agrocd:${IMAGE_TAG}"
+          NEW_IMAGE="${secrets.USERNAME}/agrocd:${IMAGE_TAG}"
           
           # Update the deployment file directly
           sed -i "s|image: .*|image: ${NEW_IMAGE}|g" kubernetes/deployment.yaml
