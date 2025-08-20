@@ -117,7 +117,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.RUN_NUMBER }}
+          image-ref: ${{ secrets.DOCKER_USERNAME }}/agrocd:${{ github.RUN_NUMBER }}
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
@@ -134,5 +134,5 @@ jobs:
       
       - name: Set image tag output
         id: set_output
-        run: echo "image_tag=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_OUTPUT
+        run: echo "image_tag=$(echo ${{ github.RUN_NUMBER }} | cut -c1-7)" >> $GITHUB_OUTPUT
 
