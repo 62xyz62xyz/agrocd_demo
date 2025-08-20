@@ -146,7 +146,7 @@ jobs:
       - name: Update Kubernetes deployment file
         env:
           IMAGE_TAG: ${{ github.RUN_NUMBER }}
-          USERNAME: ${{ secrets.USERNAME }}
+          USERNAME: ${{ secrets.DOCKER_USERNAME }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
           # Define the new image with tag
