@@ -7,6 +7,8 @@ metadata:
     # Add additional annotations as needed for your specific ingress controller
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  ingressClassName: nginx   # 👈 This tells it to use the nginx controller
+
   rules:
   - host:   # Replace with your actual domain
     http:
