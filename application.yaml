@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/62xyz62xyz/agrocd_demo.git'   # Set to your actual GitHub repo URL
+    targetRevision: main                                       # Or specify a branch like 'main'
+    path: kubernetes                                            # Path to the directory in your repo
+    directory:
+      recurse: true                                             # Detects changes in all files in 'kubernetes'
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default                                          # Or your application's namespace
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
